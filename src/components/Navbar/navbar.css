@@ -1,0 +1,126 @@
+:root{
+    --header-height: 60px;
+}
+
+.header{
+    height: var(--header-height);
+    background: black;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+}
+
+
+.header-logo , .header-logo img{
+    height:120%;
+    object-fit: contain;
+}
+
+/* disabling base margin and padding on ul */
+.header-links ul{
+    margin-block-start: unset;
+    margin-block-end: unset;
+    padding-inline-start: unset;
+}
+
+.header-links ul{
+    display: flex;
+    color: white;
+    justify-content: space-evenly;
+    flex-grow: 1;
+}
+
+.header-links{   
+    width: 50%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.header-links ul li{
+    list-style: none;
+    margin:auto;
+
+}
+
+.header-links ul li{
+    text-decoration: none;
+    color:white;
+}
+
+
+.header-links ul li:hover{
+    color:#FFC222;
+    cursor : pointer
+}
+
+.menu-icon {
+    display: none;
+}
+
+.Nav__black{
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.95);
+    width: 100%;
+  }
+
+.nav-links, .nav-links:visited, .nav-links:hover, .nav-links:active{
+    color: inherit;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 960px) {
+    .Navbaritems {
+    position: relatve;
+    }
+
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        height: calc(100vh - var(--header-height));
+        position: absolute;
+        top: var(--header-height);
+        opacity: 1;
+        left: -100%;
+        transition: all 0.5s ease;
+    }
+
+    .nav-menu.active {
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 1;
+        background-color: black;
+        /* margin-top: -3%; */
+    }
+
+    .nav-links {
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+    }
+
+    .menu-icon {
+        display: block;
+        position: absolute;
+        color: white;
+        top: 20%;
+        align-items: center;
+        right: 2vw;
+        font-size: 1.8rem;
+        cursor: pointer;
+    }
+
+    .fa-times {
+        color: #fff;
+        font-size: 2rem;
+    }
+
+}
+
