@@ -91,10 +91,12 @@ export default function PrimarySearchAppBar() {
   };
 
   const handleMobileMenuClose = () => {
+    window.location.href = "/SignUp"
     setMobileMoreAnchorEl(null);
   };
 
   const handleMenuClose = () => {
+    window.location.href = "/SignUp"
     setAnchorEl(null);
     handleMobileMenuClose();
   };
@@ -114,8 +116,8 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      {/* <MenuItem onClick={handleMenuClose}>Profile</MenuItem> */}
+      <MenuItem onClick={handleMenuClose}>Login/SignUp</MenuItem>
     </Menu>
   );
 
@@ -146,7 +148,7 @@ export default function PrimarySearchAppBar() {
         </IconButton>
         <p>Notifications</p>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
+      <MenuItem onClick={handleMobileMenuClose}>
         <IconButton
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
@@ -155,23 +157,15 @@ export default function PrimarySearchAppBar() {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        <p>Login/SignUp</p>
       </MenuItem>
     </Menu>
   );
 
   return (
     <div className={classes.grow}>
-      <AppBar style={{ backgroundColor: 'black'}} position="static">
+      <AppBar style={{ backgroundColor: '#222'}} position="static">
         <Toolbar>
-          {/* <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton> */}
           <Typography className={classes.title} variant="h6" noWrap>
             Candle&Cookies
           </Typography>

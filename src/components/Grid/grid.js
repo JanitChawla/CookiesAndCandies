@@ -19,7 +19,11 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
+    maxWidth: 400,
+    marginLeft: "20px",
+    marginTop: "20px",
+    // backgroundColor: "black",
+    // color: "white"
   },
   media: {
     height: 0,
@@ -32,85 +36,115 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.shortest,
     }),
   },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
   avatar: {
     backgroundColor: red[500],
   },
 }));
 
-const list = [
+let list = [
     {
         profilepic: "R",
         title: "Dark Chocolates",
         date: "July 10 2021",
         image: "https://images.unsplash.com/photo-1534119139482-b530a7f9a98b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGNhbmRpZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
-        detail: " This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.",
-        expanded: " Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes."
-    }
+        detail: " Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        expand: " Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.",
+        expanded: false
+    },
+    {
+      profilepic: "J",
+      title: "M&M's",
+      date: "July 10 2021",
+      image: "https://images.unsplash.com/photo-1534705867302-2a41394d2a3b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      detail: " Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      expand: " Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.",
+      expanded: false
+  },
+  {
+    profilepic: "J",
+    title: "M&M's",
+    date: "July 10 2021",
+    image: "https://images.unsplash.com/photo-1600359756098-8bc52195bbf4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80",
+    detail: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    expand: " Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.",
+    expanded: false
+  },
+  {
+    profilepic: "J",
+    title: "M&M's",
+    date: "July 10 2021",
+    image: "https://images.unsplash.com/photo-1600359756098-8bc52195bbf4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80",
+    detail: " Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
+    expand: " Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.",
+    expanded: false
+  },
+  {
+    profilepic: "J",
+    title: "M&M's",
+    date: "July 10 2021",
+    image: "https://images.unsplash.com/photo-1600359756098-8bc52195bbf4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80",
+    detail: " Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    expand: " Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.",
+    expanded: false
+  },
+  {
+    profilepic: "J",
+    title: "M&M's",
+    date: "July 10 2021",
+    image: "https://images.unsplash.com/photo-1600359756098-8bc52195bbf4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80",
+    detail: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    expand: " Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.",
+    expanded: false
+  },
 ]
 
 export default function GridCards() {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  // const [expanded, setExpanded] = React.useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  // const handleExpandClick = () => {
+  //   console.log("clicked")
+  //   setExpanded(!expanded);
+  // };
 
   return (
     <Grid container>
-        {list.map((data, i) => ( 
-        <Grid item xs={12} sm={8} md={4} >
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            {data.profilepic}
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title={data.title}
-        subheader={data.date}
-      />
-      <CardMedia
-        className={classes.media}
-        image={data.image}
-        // title="Dark Chocolates"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {data.detail}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
+      {list.map((data, i) => ( 
+        <Grid item xs={12} sm={6} md={4} >
+          <Card className={classes.root}>
+            <CardHeader
+              avatar={
+                <Avatar aria-label="recipe" className={classes.avatar}>
+                  {data.profilepic}
+                </Avatar>
+              }
+              action={
+                <IconButton key={i}
+          onClick = {() => console.log("data.expanded to be true", data.expanded = !data.expanded) }
+          aria-expanded="true"
           aria-label="show more"
         >
           <ExpandMoreIcon />
         </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+              }
+              title={data.title}
+              subheader={data.date}
+            />
+            <CardMedia
+              className={classes.media}
+              image={data.image}
+        // title="Dark Chocolates"
+            />
+            <CardContent>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {data.detail}
+              </Typography>
+            </CardContent>
+      <Collapse in="true" timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Details</Typography>
           <Typography paragraph>
-            {data.expanded}
+            {data.expand}
           </Typography>
         </CardContent>
       </Collapse>
@@ -120,5 +154,3 @@ export default function GridCards() {
     </Grid>
   );
 }
-
-
