@@ -47,7 +47,10 @@ let list = [
         image: "https://images.unsplash.com/photo-1534119139482-b530a7f9a98b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGNhbmRpZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
         detail: " Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
         expand: " Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.",
-        type: "Chocolate"
+        type: "Chocolate",
+        MAP: "₹200",
+        egg: "Yes",
+        BakedTime: "15 mins"
     },
     {
       profilepic: "J",
@@ -56,7 +59,10 @@ let list = [
       image: "https://images.unsplash.com/photo-1534705867302-2a41394d2a3b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       detail: " Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       expand: " Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.",
-      type: "Vanilla"
+      type: "Vanilla",
+      MAP: "₹200",
+      egg: "No",
+      BakedTime: "40 mins"
   },
   {
     profilepic: "J",
@@ -65,7 +71,10 @@ let list = [
     image: "http://cdn.sallysbakingaddiction.com/wp-content/uploads/2015/04/dark-chocolate-chunk-oatmeal-cookies-5.jpg",
     detail: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     expand: " Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.",
-    type: "Oatmeal"
+    type: "Oatmeal",
+    MAP: "₹200",
+    egg: "Yes",
+    BakedTime: "2 hour"
   },
   {
     profilepic: "J",
@@ -74,7 +83,10 @@ let list = [
     image: "https://i.pinimg.com/originals/dc/2d/b8/dc2db80cc317d0fecb06d3bf8b653800.jpg",
     detail: " Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
     expand: " Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.",
-    type:  "Nutella"
+    type:  "Nutella",
+    MAP: "₹200",
+    egg: "Yes",
+    BakedTime: "30 min"
   },
   {
     profilepic: "J",
@@ -83,7 +95,10 @@ let list = [
     image: "https://cdn.shopify.com/s/files/1/0279/6329/3831/products/12_SECTION_BROWN_BOX_1024x1024.jpg?v=1580103165",
     detail: " Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     expand: " Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.",
-    type: "Chocolate"
+    type: "Chocolate",
+    MAP: "₹200",
+    egg: "Yes",
+    BakedTime: "25 min"
   },
   {
     profilepic: "J",
@@ -92,7 +107,10 @@ let list = [
     image: "https://images.unsplash.com/photo-1600359756098-8bc52195bbf4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80",
     detail: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     expand: " Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10 minutes.",
-    type: "Vanilla"
+    type: "Vanilla",
+    MAP: "₹200",
+    egg: "No",
+    BakedTime: "1 hour"
   },
 ]
 
@@ -126,12 +144,15 @@ function MainGrid (props) {
             />
             <CardContent>
               <Typography variant="body2" color="textSecondary" component="p">
-                {props.data.detail}
+                {"Minimum Asking Price - " + props.data.MAP +". " + "Eggs used - " + props.data.egg}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {"Baked Time - " + props.data.BakedTime}
               </Typography>
             </CardContent>
       
         <CardContent>
-          <Typography paragraph>Details</Typography>
+          {/* <Typography style={{marginTop: "-30px"}} paragraph>Details</Typography>           */}
           <Typography paragraph>
             <Counter />
           </Typography>
@@ -148,7 +169,8 @@ export default function GridCards() {
     checkedA: false,
     checkedB: false,
     checkedC: false,
-    checkedD: false
+    checkedD: false,
+    checkedE: false
   });
 
   const handleChange = (event) => {
@@ -156,6 +178,10 @@ export default function GridCards() {
   };
 
   let filter = (
+    <div container>
+      <div style={{color: "Grey" , fontSize: "30px" , fontWeight: 'bold'}}>
+      Filter
+      </div>
     <FormGroup style={{justifyContent: "center"}} row>
       <FormControlLabel
         control={<Checkbox checked={state.checkedA} onChange={handleChange} name="checkedA" />}
@@ -187,7 +213,12 @@ export default function GridCards() {
         }
         label="Vanilla"
       />
+      <FormControlLabel
+        control={<Checkbox checked={state.checkedE} onChange={handleChange} name="checkedE" />}
+        label="Eggless"
+      />
     </FormGroup>
+    </div>
   )
 
   
@@ -198,7 +229,7 @@ let grid = (
     )
 )
 )
-if(state.checkedA || state.checkedB || state.checkedC || state.checkedD) {
+if(state.checkedA || state.checkedB || state.checkedC || state.checkedD || state.checkedE) {
   if(state.checkedA) {
     grid = (
       list.filter(data=> data.type ==="Chocolate")
@@ -228,9 +259,17 @@ if(state.checkedA || state.checkedB || state.checkedC || state.checkedD) {
       .map((data, i) => ( 
         <MainGrid data={data} />
         ))
-    )
+    ) }
+    else if(state.checkedE) {
+      grid = (
+        list.filter(data=> data.egg ==="No")
+        .map((data, i) => ( 
+          <MainGrid data={data} />
+          ))
+      )
+    }
   }
-}
+
 
   return (
     <React.Fragment>

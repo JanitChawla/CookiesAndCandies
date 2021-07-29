@@ -4,8 +4,7 @@ import Button from '@material-ui/core/Button';
   
 const Counter = () => {
   //  Counter is a state initialized to 0
-  const [counter, setCounter] = useState(0)
-  const [count, setCount] = useState(0)
+  const [counter, setCounter] = useState(200)
   
   // Function is called everytime increment button is clicked
   const handleClick1 = () => {
@@ -34,7 +33,7 @@ const Counter = () => {
         fontSize: '120%',
         marginTop: '1px'
       }}>
-        {counter}
+        {"₹" + counter}
       </div>
           <Button style={{marginTop: '25px'}} onClick={handleClick1} variant="contained" color="primary" >Increase Bid by 1</Button>
           <Button style={{marginTop: '25px'}} onClick={handleClick2} variant="contained" color="primary" >Increase Bid by 5</Button>
