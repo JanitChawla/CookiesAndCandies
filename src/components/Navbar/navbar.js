@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     display: 'none',
+    cursor: 'pointer',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
@@ -91,12 +92,12 @@ export default function PrimarySearchAppBar() {
   };
 
   const handleMobileMenuClose = () => {
-    window.location.href = "/SignUp"
+    
     setMobileMoreAnchorEl(null);
   };
 
   const handleMenuClose = () => {
-    window.location.href = "/SignUp"
+    
     setAnchorEl(null);
     handleMobileMenuClose();
   };
@@ -117,7 +118,7 @@ export default function PrimarySearchAppBar() {
       onClose={handleMenuClose}
     >
       {/* <MenuItem onClick={handleMenuClose}>Profile</MenuItem> */}
-      <MenuItem onClick={handleMenuClose}>Login/SignUp</MenuItem>
+      <MenuItem onClick={()=> window.location.href = "/SignUp"}>Login/SignUp</MenuItem>
     </Menu>
   );
 
@@ -166,8 +167,8 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar style={{ backgroundColor: '#222'}} position="static">
         <Toolbar>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Candle&Cookies
+          <Typography onClick={()=> window.location.href = "/"} className={classes.title} variant="h6" noWrap>
+            Candies&Cookies
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
