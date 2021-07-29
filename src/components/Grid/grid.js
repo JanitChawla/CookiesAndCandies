@@ -144,7 +144,7 @@ function MainGrid (props) {
             />
             <CardContent>
               <Typography variant="body2" color="textSecondary" component="p">
-                {"Minimum Asking Price - " + props.data.MAP +". " + "Eggs used - " + props.data.egg}
+                {`Minimum Asking Price -  ${props.data.MAP}. Eggs used - ${props.data.egg}`}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
                 {"Baked Time - " + props.data.BakedTime}
@@ -164,7 +164,6 @@ function MainGrid (props) {
 }
 
 export default function GridCards() {
-  const classes = useStyles();
   const [state, setState] = React.useState({
     checkedA: false,
     checkedB: false,
