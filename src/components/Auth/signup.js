@@ -1,11 +1,10 @@
-import React from 'react';
+import React , {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
+import Alert from '@material-ui/lab/Alert';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
@@ -35,6 +34,27 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
   const classes = useStyles();
 
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [Cnfpassword, setCnfPassword] = useState('');
+  const [error , setError] = useState('');
+
+  const onFormSubmit = (e)=> {
+    e.preventDefault();
+    setError('');
+    if(password !== Cnfpassword) {
+      return setError("password does not match")
+    }
+
+    console.log(firstName);
+    console.log(lastName);
+    console.log(email);
+    console.log(password);
+    console.log(Cnfpassword);
+  }
+
   return (
     <Container style={{marginBottom: '10px'}} component="main" maxWidth="xs">
       <CssBaseline />
@@ -44,8 +64,9 @@ export default function SignUp() {
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign up
+          <p>{error && <Alert severity="error">{error}</Alert> }</p>
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={onFormSubmit} className={classes.form}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -53,8 +74,9 @@ export default function SignUp() {
                 name="firstName"
                 variant="outlined"
                 required
+                onChange={(e)=> {setFirstName(e.target.value)}}
+                value={firstName}
                 fullWidth
-                id="firstName"
                 label="First Name"
                 autoFocus
               />
@@ -63,8 +85,9 @@ export default function SignUp() {
               <TextField
                 variant="outlined"
                 required
+                onChange={(e)=> {setLastName(e.target.value)}}
                 fullWidth
-                id="lastName"
+                value={lastName}
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
@@ -75,7 +98,9 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
+                type='email'
+                value={email}
+                onChange={(e)=> {setEmail(e.target.value)}}
                 label="Email Address"
                 name="email"
                 autoComplete="email"
@@ -85,18 +110,25 @@ export default function SignUp() {
               <TextField
                 variant="outlined"
                 required
+                value={password}
                 fullWidth
                 name="password"
                 label="Password"
+                onChange={(e)=> {setPassword(e.target.value)}}
                 type="password"
-                id="password"
-                autoComplete="current-password"
               />
             </Grid>
             <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+              <TextField
+                variant="outlined"
+                required
+                id="password"
+                value={Cnfpassword}
+                fullWidth
+                name="password"
+                label="Confirm Password"
+                onChange={(e)=> {setCnfPassword(e.target.value)}}
+                type="password"
               />
             </Grid>
           </Grid>

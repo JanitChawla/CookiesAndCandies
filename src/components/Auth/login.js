@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -36,6 +36,15 @@ const useStyles = makeStyles((theme) => ({
 export default function LogIn() {
   const classes = useStyles();
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    console.log(email)
+    console.log(password)
+  }
+
   return (
     <Container style={{marginBottom: "10px"}} component="main" maxWidth="xs">
       <CssBaseline />
@@ -46,12 +55,14 @@ export default function LogIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={onFormSubmit} className={classes.form}>
           <TextField
             variant="outlined"
             margin="normal"
             required
+            value={email}
             fullWidth
+            onChange={e => {setEmail(e.target.value)}}
             id="email"
             label="Email Address"
             name="email"
@@ -61,7 +72,9 @@ export default function LogIn() {
           <TextField
             variant="outlined"
             margin="normal"
+            value={password}
             required
+            onChange={e => {setPassword(e.target.value)}}
             fullWidth
             name="password"
             label="Password"
