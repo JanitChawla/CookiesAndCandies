@@ -4,6 +4,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Hosted at: https://cookies-and-candies-auction-app.netlify.app/
 
+
+<img align="center" src="./tempsnip.png" />
+</br>
+<img align="center" src="./3.PNG" />
+
+
 ## Available Scripts
 
 In the project directory, you can run:
